@@ -101,8 +101,10 @@ for live features. The app builds and runs **without** these
   createdAt). Written client-side on sign-in/register (`saveUserProfile`); read
   by `auth-context` (client) and `/api/auth/session` (Admin SDK, for the role
   in the session cookie).
-- `stock/{productId}` → `{ stockCount: number }` — read live by
-  `useRealtimeStock(productId, initialStock)`. Public-read, admin-write.
+- `stock/{productId}` → `{ stockCount, name?, updatedAt? }` — read live by
+  `useRealtimeStock(productId, initialStock)` (cards + detail). Public-read,
+  admin-write. Writers: `/api/orders` decrements via Admin SDK on purchase;
+  admin seed/reset via `lib/firestore-stock.ts` (`seedStockFromCatalogue`/`setStock`).
 - `orders/{orderNumber}` → a `TrackedOrder` — written by `finalizeOrder`
   (signed-in), read live by `subscribeToOrder` (`/track`) and
   `subscribeToRecentOrders` (vendor/admin). Owner-read; vendor/admin read+status-update.

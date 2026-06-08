@@ -188,6 +188,17 @@ e2e/         home.spec.ts    # Playwright
   is SSG for sample slugs; an **unknown slug** falls through to
   `LiveProductDetail` (client, subscribes by slug) so vendor-listed products get
   a working detail page. Shared body = `ProductDetailContent`.
+- **Real-time stock (end-to-end):** the `stock/{productId}` collection is the
+  realtime source read by `useRealtimeStock` (product cards + `ProductDetailContent`).
+  Writers: `/api/orders` decrements it via Admin SDK on purchase; admins seed/reset
+  it (Admin → Overview "Seed / reset stock" button → `lib/firestore-stock.ts`).
+  Rules: public read, **admin-only write** (Admin SDK bypasses for the server
+  decrement). `AddToCartButton` takes an optional live `stock` prop.
+- **Deployment:** repo at github.com/abdullahasghar966/nexus-market. Vercel deploy
+  is user-driven (their login + env vars). On Vercel there's no TLS interception, so
+  Admin SDK / Stripe / Mongo work without `--use-system-ca`. See README.md for the
+  full deploy checklist (Firebase authorized domains, Mongo Atlas 0.0.0.0/0, prod
+  Stripe webhook, `NEXT_PUBLIC_APP_URL`).
 - **Dashboards own their chrome.** The `(vendor)` and `(admin)` route groups
   have **no layout** of their own (no shop Header/Footer) — each dashboard
   renders its full shell (dark sidebar / top-nav). Recharts + Framer need

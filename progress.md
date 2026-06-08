@@ -4,16 +4,40 @@ Legend: ✅ done · 🔄 in progress · ⬜ not started
 
 ---
 
-## 🔖 SESSION HANDOFF — READ FIRST (updated 2026-06-05 — FEATURE-COMPLETE BUILD)
+## 🔖 SESSION HANDOFF — READ FIRST (updated 2026-06-06 — SHIPPED TO GITHUB)
 
-**Status:** every remaining milestone is now **built and build-green**. The app
-is feature-complete in code. What's left is *the user's runtime confirmation* of
-the few server→external paths (real Stripe payment, Mongo writes, Resend email,
-Admin-SDK verify over TLS) + **publishing the updated Firestore rules**. Nothing
-is half-written.
+**Status:** feature-complete, build-green, and **pushed to GitHub**. User has
+published the Firestore rules, created an admin account, and added all keys
+(Firebase, Mongo, Stripe, Resend, `SESSION_SECRET`). Real-time stock is now
+genuinely end-to-end (see below). Only remaining item: **the user runs the
+Vercel deploy** (needs their Vercel login — can't be automated from here).
+
+**Repo:** https://github.com/abdullahasghar966/nexus-market (public, `main`).
+`.env.local` is git-ignored — verified no secrets committed (only `.env.example`).
 
 **Build state:** `npm run build` ✅ **24 routes** · `tsc --noEmit` ✅ clean ·
-`npm test` ✅ **18 tests** (added `lib/orders.test.ts`).
+`npm test` ✅ **18 tests**.
+
+### ✅ Real-time stock — now fully wired (2026-06-06)
+Previously the listener existed but nothing wrote the source. Fixed 4 things:
+1. `/api/orders` decrements Firestore `stock/{productId}` via Admin SDK on every
+   order (best-effort; works on Vercel, and on dev via `--use-system-ca`).
+2. `ProductDetailContent` is now a client component using `useRealtimeStock`
+   (live count drives the in-stock/low/out line + disables Add-to-Cart at 0).
+   `AddToCartButton` takes an optional `stock` override.
+3. `lib/firestore-stock.ts` — `seedStockFromCatalogue()` / `setStock()` (admin
+   writes; rules allow `stock` write only for admins).
+4. Admin → Overview has a **"Seed / reset stock"** button (client-side admin
+   write). Demo: seed → open a product in 2 tabs → place order → stock drops live.
+`ProductCard` already used `useRealtimeStock`; now there's a real source + writer.
+
+### 🟡 Remaining: Vercel deploy (user-driven)
+GitHub is done. For Vercel: import the repo at vercel.com/new, paste every
+`.env.local` var (for `FIREBASE_ADMIN_PRIVATE_KEY` paste WITHOUT the wrapping
+quotes, keep `\n`), deploy. Post-deploy: add the vercel.app domain to Firebase
+Auth → Authorized domains; allow `0.0.0.0/0` in Mongo Atlas Network Access;
+production Stripe webhook endpoint → `/api/webhooks/stripe`; set
+`NEXT_PUBLIC_APP_URL` to the deployed URL. Full steps in README.md.
 
 ### ✅ Built this session (all build-safe, graceful fallback)
 1. **Stripe checkout (auto-switch).** `CheckoutView` now picks `StripeCheckout`
