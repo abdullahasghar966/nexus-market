@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus Market - Cart Drawer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-secondary-container": "#006f66",
+                        "surface-dim": "#dad9e3",
+                        "surface-container-high": "#e8e7f1",
+                        "primary-container": "#1e40af",
+                        "tertiary": "#611e00",
+                        "on-tertiary-container": "#ffa583",
+                        "secondary-container": "#86f2e4",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00288e",
+                        "tertiary-container": "#872d00",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "on-primary-fixed": "#001453",
+                        "secondary": "#006a61",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#a8b8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-surface-variant": "#444653",
+                        "surface-container": "#eeedf7",
+                        "on-background": "#1a1b22",
+                        "secondary-fixed": "#89f5e7",
+                        "background": "#fbf8ff",
+                        "on-surface": "#1a1b22",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-highest": "#e3e1eb",
+                        "surface": "#fbf8ff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "inverse-on-surface": "#f1f0fa",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#3755c3",
+                        "outline": "#757684",
+                        "surface-bright": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f4f2fc",
+                        "tertiary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-40 transition-colors">
+<div class="flex justify-between items-center w-full px-margin-desktop h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="#">Nexus Market</a>
+<nav class="hidden md:flex gap-base">
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-secondary-fixed transition-colors px-3 py-2" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-secondary-fixed transition-colors px-3 py-2" href="#">Vendors</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-secondary-fixed transition-colors px-3 py-2" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center text-primary dark:text-primary-fixed-dim font-body-md text-body-md gap-4">
+<button class="hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Simulated Page Content (Dimmed Background) -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-12 filter blur-[2px] opacity-60 transition-all duration-300 pointer-events-none">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container h-[500px] rounded-xl flex items-center justify-center">
+<span class="text-on-surface-variant font-label-md">Product Image Placeholder</span>
+</div>
+<div class="space-y-6">
+<h1 class="font-display-lg text-display-lg text-on-surface">Premium Ergonomic Chair</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The ultimate seating experience designed for professionals who demand comfort and style in their workspace.</p>
+<div class="font-headline-lg text-headline-lg text-primary">$499.00</div>
+</div>
+</div>
+</main>
+<!-- Overlay / Backdrop -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-background/40 z-50 backdrop-blur-sm transition-opacity" id="cart-backdrop"></div>
+<!-- Cart Drawer -->
+<aside class="fixed top-0 right-0 h-full w-full max-w-md bg-surface shadow-2xl z-[60] flex flex-col transform transition-transform duration-300 ease-in-out translate-x-0 border-l border-outline-variant/30" id="cart-drawer">
+<!-- Drawer Header -->
+<div class="px-6 py-5 border-b border-outline-variant/50 flex items-center justify-between bg-surface-container-lowest sticky top-0">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_cart" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+                Your Cart (3)
+            </h2>
+<button aria-label="Close cart" class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors" id="close-cart">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Cart Items List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 bg-surface">
+<!-- Item 1 -->
+<div class="flex gap-4 group">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 border border-outline-variant/30 shadow-sm relative">
+<img alt="Minimalist white desk lamp with wooden base" class="w-full h-full object-cover" data-alt="A sleek, modern desk lamp with a matte white finish and a light natural wood base, set against a clean, bright studio background. The lighting is soft and even, highlighting the minimalist design and high-end aesthetic of the product. The mood is calm and productive, fitting a premium marketplace environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlTGOjuEV7wekQ8zpehfEQpiF30FRP0vvWCK1jiLm_EcWLUorQ_5Dk3146ijyWQ9gxVryCc07WRfUCCLXMG1kyQ1IlS7mVPKGcW0MogPMxjpxCfCiHKK0KLfVBcoWfxKJwdHaqZA_TyBcsbPT0SpOG7ICG8MT0wldcxrp1aJfUZpce5FSDsyOUOmo9o_p5mDKhZMPpppCSy7_cEaMDxO2UVRmvI-B1vAGGX0FD3B-CqU9gn1smw7cvgKysTR-YnQw9L6GoFdU"/>
+</div>
+<div class="flex flex-col flex-1 py-1">
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold line-clamp-2">Lumina Desk Lamp - Matte White</h3>
+<button aria-label="Remove item" class="text-on-surface-variant hover:text-error transition-colors p-1 -mt-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Vendor: <span class="text-primary font-medium">BrightSpaces</span></p>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex items-center border border-outline-variant rounded-md overflow-hidden bg-surface-container-lowest h-8">
+<button aria-label="Decrease quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors disabled:opacity-50">-</button>
+<span class="font-label-md text-label-md w-8 text-center border-x border-outline-variant/50">1</span>
+<button aria-label="Increase quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors">+</button>
+</div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">$129.00</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 group">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 border border-outline-variant/30 shadow-sm relative">
+<img alt="Mechanical keyboard with gray and orange keycaps" class="w-full h-full object-cover" data-alt="A premium mechanical keyboard featuring a sophisticated gray color scheme with striking orange accent keys. It rests on a pristine white desk surface. The lighting is crisp and directional, emphasizing the texture of the keycaps and the solid build quality. The overall look is modern, technical, and high-quality, reflecting a professional workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASThw1gG42DIyPhmxAZFpfeZoWRYZPaclQdzMA0WVn0sPtPivWWeDwdPwjq_lJhy483S2PVynjyesiWrw-7ql1YyLQPgNEZvtGGiC9YgdfQNrirD7h8zowVlZhrJPCeCh5A-MNfvfhCyYuBp9zrfhkV01EXOCvjvc4sqWRWWEarHotrOzHyG6PGDKIWZP-fI0gbDYhkiJipNMh2ErB6N8st_BdIhHusgy1JpIDM2h68TWOkd9XA-vF1nKIt3lbqMGKPZHhyWY"/>
+</div>
+<div class="flex flex-col flex-1 py-1">
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold line-clamp-2">Keychron Q1 Pro Mechanical Keyboard</h3>
+<button aria-label="Remove item" class="text-on-surface-variant hover:text-error transition-colors p-1 -mt-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Vendor: <span class="text-primary font-medium">TechHaven</span></p>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex items-center border border-outline-variant rounded-md overflow-hidden bg-surface-container-lowest h-8">
+<button aria-label="Decrease quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors disabled:opacity-50">-</button>
+<span class="font-label-md text-label-md w-8 text-center border-x border-outline-variant/50">2</span>
+<button aria-label="Increase quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors">+</button>
+</div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">$398.00 <span class="text-label-sm text-on-surface-variant font-normal block text-right">($199.00/ea)</span></div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-4 group">
+<div class="w-24 h-24 rounded-lg bg-surface-container overflow-hidden shrink-0 border border-outline-variant/30 shadow-sm relative">
+<div class="absolute inset-0 bg-surface-variant/20 flex items-center justify-center text-on-surface-variant font-label-sm">No Image</div>
+</div>
+<div class="flex flex-col flex-1 py-1">
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold line-clamp-2">Ergonomic Mouse Pad with Wrist Rest</h3>
+<button aria-label="Remove item" class="text-on-surface-variant hover:text-error transition-colors p-1 -mt-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Vendor: <span class="text-primary font-medium">Workspace Essentials</span></p>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex items-center border border-outline-variant rounded-md overflow-hidden bg-surface-container-lowest h-8">
+<button aria-label="Decrease quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors disabled:opacity-50" disabled="">-</button>
+<span class="font-label-md text-label-md w-8 text-center border-x border-outline-variant/50">1</span>
+<button aria-label="Increase quantity" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors">+</button>
+</div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">$24.50</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer / Checkout -->
+<div class="p-6 bg-surface-container-lowest border-t border-outline-variant/50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] sticky bottom-0">
+<div class="space-y-3 mb-6">
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Subtotal</span>
+<span class="text-on-surface font-semibold">$551.50</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Estimated Shipping</span>
+<span class="text-on-surface font-semibold">$15.00</span>
+</div>
+<div class="h-px w-full bg-outline-variant/50 my-2"></div>
+<div class="flex justify-between items-center text-on-surface font-headline-md text-headline-md">
+<span>Total</span>
+<span class="text-primary">$566.50</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-fixed-variant text-on-primary font-label-md text-label-md py-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm">
+                Proceed to Checkout
+                <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-label-sm text-label-sm text-center text-on-surface-variant mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span> Secure checkout
+            </p>
+</div>
+</aside>
+<script>
+        // Simple script to handle drawer closing for demonstration
+        document.getElementById('close-cart').addEventListener('click', function() {
+            document.getElementById('cart-drawer').classList.add('translate-x-full');
+            document.getElementById('cart-backdrop').classList.add('opacity-0');
+            setTimeout(() => {
+                document.getElementById('cart-backdrop').style.display = 'none';
+            }, 300);
+            
+            // Remove blur from main content
+            const main = document.querySelector('main');
+            main.classList.remove('blur-[2px]', 'opacity-60', 'pointer-events-none');
+        });
+        
+        document.getElementById('cart-backdrop').addEventListener('click', function() {
+            document.getElementById('close-cart').click();
+        });
+    </script>
+</body></html>

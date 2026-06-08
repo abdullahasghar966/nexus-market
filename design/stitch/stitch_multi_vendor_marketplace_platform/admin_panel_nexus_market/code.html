@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus Market Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-secondary-container": "#006f66",
+                        "surface-dim": "#dad9e3",
+                        "surface-container-high": "#e8e7f1",
+                        "primary-container": "#1e40af",
+                        "tertiary": "#611e00",
+                        "on-tertiary-container": "#ffa583",
+                        "secondary-container": "#86f2e4",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00288e",
+                        "tertiary-container": "#872d00",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "on-primary-fixed": "#001453",
+                        "secondary": "#006a61",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#a8b8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-surface-variant": "#444653",
+                        "surface-container": "#eeedf7",
+                        "on-background": "#1a1b22",
+                        "secondary-fixed": "#89f5e7",
+                        "background": "#fbf8ff",
+                        "on-surface": "#1a1b22",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-highest": "#e3e1eb",
+                        "surface": "#fbf8ff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "inverse-on-surface": "#f1f0fa",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#3755c3",
+                        "outline": "#757684",
+                        "surface-bright": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f4f2fc",
+                        "tertiary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        .pulse-indicator { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Nexus Market Admin</span>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1 rounded-full">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim pulse-indicator"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Platform Live</span>
+</div>
+</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-body-md text-body-md text-primary dark:text-secondary-fixed border-b-2 border-primary dark:border-secondary-fixed pb-1 hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Overview</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Users</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Vendors</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Products</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Orders</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="search">search</span></button>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<h1 class="font-headline-lg text-headline-lg mb-8">Platform Overview</h1>
+<!-- Metric Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-12">
+<!-- GMV Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Platform GMV</span>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div class="font-headline-lg text-headline-lg mb-2">$4.2M</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-sm text-label-sm">12.5% vs last month</span>
+</div>
+</div>
+<!-- Vendors Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Registered Vendors</span>
+<span class="material-symbols-outlined text-primary">store</span>
+</div>
+<div class="font-headline-lg text-headline-lg mb-2">1,842</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-sm text-label-sm">3.2% vs last month</span>
+</div>
+</div>
+<!-- Users Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Users</span>
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<div class="font-headline-lg text-headline-lg mb-2">142.5K</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-sm text-label-sm">8.1% vs last month</span>
+</div>
+</div>
+<!-- Health Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Platform Health</span>
+<span class="material-symbols-outlined text-primary">monitor_heart</span>
+</div>
+<div class="font-headline-lg text-headline-lg mb-2">99.9%</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm">All systems operational</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<section class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md">Recent Activity &amp; Flagged Items</h2>
+<button class="font-label-md text-label-md text-primary border border-outline-variant px-4 py-2 rounded hover:bg-surface-container-low transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">
+<th class="py-3 px-6 font-medium">Entity</th>
+<th class="py-3 px-6 font-medium">Type</th>
+<th class="py-3 px-6 font-medium">Status/Risk</th>
+<th class="py-3 px-6 font-medium">Date</th>
+<th class="py-3 px-6 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">T</div>
+<div>
+<div class="font-medium text-on-surface">TechHaven Electronics</div>
+<div class="text-sm text-on-surface-variant">Vendor ID: #V-8842</div>
+</div>
+</td>
+<td class="py-4 px-6">Vendor Onboarding</td>
+<td class="py-4 px-6">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-xs font-bold tracking-wide uppercase">Pending Review</span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">2 mins ago</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-primary hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined" style="font-size: 20px;">visibility</span></button>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span></button>
+</div>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">inventory_2</span>
+</div>
+<div>
+<div class="font-medium text-on-surface">Bulk Order #9921</div>
+<div class="text-sm text-on-surface-variant">High Value Transaction</div>
+</div>
+</td>
+<td class="py-4 px-6">Transaction</td>
+<td class="py-4 px-6">
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-bold tracking-wide uppercase">Flagged</span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">15 mins ago</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-primary hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined" style="font-size: 20px;">manage_search</span></button>
+<button class="text-error hover:opacity-80 transition-opacity"><span class="material-symbols-outlined" style="font-size: 20px;">block</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">M</div>
+<div>
+<div class="font-medium text-on-surface">Mark J.</div>
+<div class="text-sm text-on-surface-variant">User ID: #U-1123</div>
+</div>
+</td>
+<td class="py-4 px-6">User Account</td>
+<td class="py-4 px-6">
+<span class="bg-secondary-fixed-dim text-on-secondary-fixed px-2 py-1 rounded text-xs font-bold tracking-wide uppercase">Normal</span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">1 hour ago</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-primary hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined" style="font-size: 20px;">edit</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</body></html>

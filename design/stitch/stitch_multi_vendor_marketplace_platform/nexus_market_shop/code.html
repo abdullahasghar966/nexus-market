@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus Market - Product Listing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-secondary-container": "#006f66",
+                        "surface-dim": "#dad9e3",
+                        "surface-container-high": "#e8e7f1",
+                        "primary-container": "#1e40af",
+                        "tertiary": "#611e00",
+                        "on-tertiary-container": "#ffa583",
+                        "secondary-container": "#86f2e4",
+                        "inverse-surface": "#2f3037",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00288e",
+                        "tertiary-container": "#872d00",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "on-primary-fixed": "#001453",
+                        "secondary": "#006a61",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-variant": "#e3e1eb",
+                        "on-primary-container": "#a8b8ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-surface-variant": "#444653",
+                        "surface-container": "#eeedf7",
+                        "on-background": "#1a1b22",
+                        "secondary-fixed": "#89f5e7",
+                        "background": "#fbf8ff",
+                        "on-surface": "#1a1b22",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-highest": "#e3e1eb",
+                        "surface": "#fbf8ff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "inverse-on-surface": "#f1f0fa",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#3755c3",
+                        "outline": "#757684",
+                        "surface-bright": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f4f2fc",
+                        "tertiary-fixed-dim": "#ffb59a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface docked full-width top-0 sticky shadow-sm z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop h-16 max-w-container-max mx-auto border-b border-outline-variant dark:border-outline">
+<!-- Logo -->
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+                Nexus Market
+            </div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center space-x-gutter">
+<a class="font-body-md text-body-md text-primary dark:text-secondary-fixed border-b-2 border-primary dark:border-secondary-fixed pb-1" href="#">Shop</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">Vendors</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-secondary-fixed transition-colors" href="#">About</a>
+</nav>
+<!-- Search Bar -->
+<div class="hidden lg:flex flex-1 max-w-md mx-gutter relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Search products..." type="text"/>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center space-x-4">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center space-x-1">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="hidden md:inline">Cart</span>
+</button>
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center space-x-1">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="hidden md:inline">Login</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<!-- Filter Chips -->
+<section class="mb-8 overflow-x-auto pb-2 scrollbar-hide">
+<div class="flex space-x-3">
+<button class="px-4 py-2 bg-[#1E40AF] text-white rounded-full font-label-md text-label-md whitespace-nowrap shadow-sm hover:opacity-90 transition-opacity">All</button>
+<button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">Electronics</button>
+<button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">Fashion</button>
+<button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">Home</button>
+<button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">Beauty</button>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<article class="bg-white rounded-lg border border-[#E2E8F0] overflow-hidden shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full group relative">
+<div class="absolute top-3 left-3 z-10 flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-[#F59E0B]"></span>
+<span class="font-label-sm text-label-sm text-[#F59E0B] font-bold uppercase tracking-wider">Low Stock</span>
+</div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative">
+<img alt="Premium Wireless Headphones" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-quality studio shot of sleek black wireless over-ear headphones resting on a minimalist white pedestal. Bright, crisp lighting emphasizing the premium texture and modern design. Clean, uncluttered background adhering to a corporate, high-trust marketplace aesthetic. Neutral color palette with subtle shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcvcjQBPaiw0oqvK2K33dlvHYh24GhrsgcXOoVPqQoFwRhEqqg4SohlxRviHmaeZgk1zgQ0L0YRapDScGuZXTXHM1DDg4PYJzKSYzo2lNgh6gf2F0A4Ze66MvYgedN12pKZLVNNOanVAdXADiCEiDhvHipE3fX9AvqeLpcdpn9aOmYiSBGfu2tutQBxdbh51TEp6XNNvzamaxSzxn1Ic9CY8zIFjwRIr3i--3pwOk1DVobyP64FtoVT9OGK4LDioUnWcCdXzE"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="font-label-sm text-label-sm text-[#1E40AF] mb-1">EcoTech Solutions</div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-2 mb-2">Noise-Canceling Wireless Headphones</h3>
+<div class="flex items-center space-x-1 mb-3">
+<div class="flex text-[#F59E0B]">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star_half" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star_half</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(4.5)</span>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-outline-variant/30">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant line-through block">$120.00</span>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">$89.99</span>
+</div>
+<button class="bg-[#1E40AF] text-white p-2 rounded-full hover:bg-primary transition-colors flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_shopping_cart">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2 (Standard Stock) -->
+<article class="bg-white rounded-lg border border-[#E2E8F0] overflow-hidden shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full group relative">
+<div class="aspect-square bg-surface-container-low overflow-hidden relative">
+<img alt="Minimalist Smartwatch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Product photography of a minimalist white smartwatch with a clean digital face displaying the time. Set against a pure white background with soft, diffused lighting to highlight the smooth silicone band. Clean lines, corporate aesthetic, emphasizing reliability and modern technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgqhwr7wbE2NAnjTgFuAwGWgomfLPKSZbxY7ZO6EH3tXX5WuM6uKg1i_21u1q0ziog7UfM0oaMYLZwKZ55B3M-ZfDXpEL-WxC4qSrsARPUfdW3FocRaub3GS1uVXFUecHYPj1WBK0ostHAtqYqO2oVobn5Fcn83q7PT1w3FaYIuo5yXE8nFURrIpvagbRC-eUVfn8dXFk4_t_be8hbas_P0WejfYZXmQieDm4RCVo329Wt4Z7jpOD9iFFTThupD8RfWYH2GdY"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="font-label-sm text-label-sm text-[#1E40AF] mb-1">TimeKeeper Inc.</div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-2 mb-2">Minimalist Smartwatch Pro Series</h3>
+<div class="flex items-center space-x-1 mb-3">
+<div class="flex text-[#F59E0B]">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star_border" style="font-size: 16px;">star_border</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(4.0)</span>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-outline-variant/30">
+<div>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">$199.99</span>
+</div>
+<button class="bg-[#1E40AF] text-white p-2 rounded-full hover:bg-primary transition-colors flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_shopping_cart">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="bg-white rounded-lg border border-[#E2E8F0] overflow-hidden shadow-[0_4px_6px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 flex flex-col h-full group relative">
+<div class="absolute top-3 left-3 z-10 flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-sm text-label-sm text-error font-bold uppercase tracking-wider">Out of Stock</span>
+</div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative opacity-60 grayscale">
+<img alt="Smart Home Hub" class="w-full h-full object-cover" data-alt="A sleek white smart home hub device sitting on a light wooden table. The lighting is soft and natural, creating a calm, modern living room atmosphere. The background is slightly blurred to keep focus on the clean, technological product design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWUigikaRlHKXW0zbn2oWarjZmegO0HTb6vKzhpJ6osO-z-LGk1Plzu_sPne42est3yb3HA31ezaapUCTgLUQ0x1ufj_DxxcnsmXvs8W3oHB1IlDTTMOV4ZW7YZlRK8Yakxh4_5LTwNHwn1-xKfezm8XEEewBAEQ-oOuhGChQTFQXqGNwdMIVRXYEAVnnuZiWvgmfUjT1bOi9ovp40bCiO5Q2PoRIXD44l7gmj5RGUdLoUDMMLDn7Q165cbsjQH8jzCUjnfjk"/>
+</div>
+<div class="p-4 flex flex-col flex-grow opacity-70">
+<div class="font-label-sm text-label-sm text-[#1E40AF] mb-1">Nexus Essentials</div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface line-clamp-2 mb-2">Smart Home Automation Hub</h3>
+<div class="flex items-center space-x-1 mb-3">
+<div class="flex text-[#F59E0B]">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(5.0)</span>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-outline-variant/30">
+<div>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">$149.00</span>
+</div>
+<button class="bg-surface-variant text-on-surface-variant p-2 rounded-full cursor-not-allowed flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined" data-icon="remove_shopping_cart">remove_shopping_cart</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-low mt-auto full-width border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-4">Nexus Market</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Nexus Market. All rights reserved.</p>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-3 uppercase tracking-wider">Explore</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Shop</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Vendors</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-3 uppercase tracking-wider">Company</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">About</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-3 uppercase tracking-wider">Legal</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

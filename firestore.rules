@@ -1,0 +1,101 @@
+rules_version = '2';
+
+// Nexus Market — Firestore security rules.
+// Paste these into Firebase Console → Firestore Database → Rules → Publish.
+// These govern CLIENT access. The Admin SDK (server) bypasses them entirely.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Role helpers ────────────────────────────────────────────────
+    // Roles live on the user's own profile doc. Reads via get() inside rules
+    // are privileged (not subject to the read rules below), so this is safe.
+    function signedIn() {
+      return request.auth != null;
+    }
+    function profile() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    function hasProfile() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+    function isAdmin() {
+      return hasProfile() && profile().role == 'admin';
+    }
+    function isVendor() {
+      return hasProfile() && (profile().role == 'vendor' || profile().role == 'admin');
+    }
+
+    // ── User profiles ───────────────────────────────────────────────
+    // A user manages only their own profile; admins may read/manage any.
+    // Role self-escalation is blocked (admins set roles out-of-band / here).
+    match /users/{uid} {
+      allow read: if (signedIn() && request.auth.uid == uid) || isAdmin();
+
+      allow create: if signedIn()
+                    && request.auth.uid == uid
+                    && request.resource.data.role in ['customer', 'vendor'];
+
+      allow update: if isAdmin()
+                    || (signedIn()
+                        && request.auth.uid == uid
+                        && request.resource.data.role == resource.data.role);
+    }
+
+    // ── Realtime stock (public read, server/admin write only) ────────
+    match /stock/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Orders ──────────────────────────────────────────────────────
+    // Owners read their own orders; vendors/admins may read (fulfilment) and
+    // update status. Customers create their own orders signed-in.
+    match /orders/{orderId} {
+      allow read: if signedIn()
+                  && (resource.data.userId == request.auth.uid || isVendor());
+      allow create: if signedIn()
+                    && request.resource.data.userId == request.auth.uid;
+      allow update: if isVendor();
+    }
+
+    // ── Reviews ─────────────────────────────────────────────────────
+    // Public read. Signed-in users post their own (validated). Admins moderate.
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if signedIn()
+                    && request.resource.data.userId == request.auth.uid
+                    && request.resource.data.rating is number
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.body is string
+                    && request.resource.data.body.size() >= 20
+                    && request.resource.data.status == 'published';
+      allow update: if isAdmin();
+      allow delete: if isAdmin()
+                    || (signedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    // ── Products (vendor-managed catalogue) ─────────────────────────
+    // Public read. Vendors create/manage their own; admins manage any.
+    match /products/{id} {
+      allow read: if true;
+      allow create: if isVendor()
+                    && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin()
+                    || (isVendor() && resource.data.ownerId == request.auth.uid);
+    }
+
+    // ── Vendor records / applications ───────────────────────────────
+    // Public read (storefront). Owner creates an application; admins manage.
+    match /vendors/{id} {
+      allow read: if true;
+      allow create: if signedIn()
+                    && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Everything else: deny by default.
+  }
+}
