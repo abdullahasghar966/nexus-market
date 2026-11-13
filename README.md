@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <strong>🔗 Live demo:</strong> <em>coming soon</em> &nbsp;·&nbsp;
+  <strong>🔗 Live demo:</strong> <a href="https://nexus-market-pi.vercel.app">nexus-market-pi.vercel.app</a> <em>(demo mode on sample data)</em> &nbsp;·&nbsp;
   <strong>💻 Source:</strong> <a href="https://github.com/abdullahasghar966/nexus-market">github.com/abdullahasghar966/nexus-market</a>
 </p>
 

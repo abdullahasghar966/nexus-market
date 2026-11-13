@@ -7,7 +7,11 @@ export const SITE = {
   tagline: "The Global Marketplace for Quality Goods",
   description:
     "Nexus Market connects buyers with verified vendors worldwide. Discover unique products, reliable suppliers, and seamless cross-border transactions built for modern commerce.",
-  url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  url:
+    process.env.NEXT_PUBLIC_APP_URL ??
+    (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000"),
 } as const;
 
 export const NAV_LINKS = [
