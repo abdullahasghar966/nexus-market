@@ -206,12 +206,12 @@ function SalesChart() {
                 dataKey="day"
                 tickLine={false}
                 axisLine={false}
-                tick={{ fontSize: 12, fill: "#444653" }}
+                tick={{ fontSize: 12, fill: "#475569" }}
                 dy={6}
               />
               <YAxis hide domain={[0, "dataMax + 600"]} />
               <Tooltip
-                cursor={{ fill: "rgba(0,40,142,0.05)" }}
+                cursor={{ fill: "rgba(18,40,76,0.05)" }}
                 formatter={(value: number) => [formatPrice(value), "Sales"]}
                 contentStyle={{
                   borderRadius: 8,
@@ -219,14 +219,14 @@ function SalesChart() {
                   fontSize: 12,
                   boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
                 }}
-                labelStyle={{ color: "#444653", fontWeight: 600 }}
+                labelStyle={{ color: "#475569", fontWeight: 600 }}
               />
               <Bar
                 dataKey="sales"
-                fill="#1e40af"
+                fill="#1e3a66"
                 radius={[6, 6, 0, 0]}
                 maxBarSize={48}
-                activeBar={{ fill: "#00288e" }}
+                activeBar={{ fill: "#12284c" }}
               />
             </BarChart>
           </ResponsiveContainer>

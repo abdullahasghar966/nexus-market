@@ -32,12 +32,12 @@ import {
 const CARD_OPTIONS: StripeCardElementOptions = {
   style: {
     base: {
-      color: "#1a1b22",
+      color: "#0f172a",
       fontFamily: "Inter, system-ui, sans-serif",
       fontSize: "16px",
-      "::placeholder": { color: "rgba(68,70,83,0.55)" },
+      "::placeholder": { color: "rgba(71,85,105,0.55)" },
     },
-    invalid: { color: "#ba1a1a", iconColor: "#ba1a1a" },
+    invalid: { color: "#b91c1c", iconColor: "#b91c1c" },
   },
 };
 
@@ -240,7 +240,7 @@ export function StripeCheckout() {
       options={{
         appearance: {
           variables: {
-            colorPrimary: "#00288e",
+            colorPrimary: "#12284c",
             fontFamily: "Inter, system-ui, sans-serif",
             borderRadius: "8px",
           },

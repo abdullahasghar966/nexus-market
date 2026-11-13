@@ -218,8 +218,8 @@ function GmvChart() {
             >
               <defs>
                 <linearGradient id="gmvFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1e40af" stopOpacity={0.28} />
-                  <stop offset="100%" stopColor="#1e40af" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#1e3a66" stopOpacity={0.28} />
+                  <stop offset="100%" stopColor="#1e3a66" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid
@@ -231,14 +231,14 @@ function GmvChart() {
                 dataKey="month"
                 tickLine={false}
                 axisLine={false}
-                tick={{ fontSize: 12, fill: "#444653" }}
+                tick={{ fontSize: 12, fill: "#475569" }}
                 dy={6}
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
                 width={36}
-                tick={{ fontSize: 12, fill: "#444653" }}
+                tick={{ fontSize: 12, fill: "#475569" }}
                 tickFormatter={(v: number) => `$${v}M`}
                 domain={[0, "dataMax + 1"]}
               />
@@ -250,15 +250,15 @@ function GmvChart() {
                   fontSize: 12,
                   boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
                 }}
-                labelStyle={{ color: "#444653", fontWeight: 600 }}
+                labelStyle={{ color: "#475569", fontWeight: 600 }}
               />
               <Area
                 type="monotone"
                 dataKey="gmv"
-                stroke="#00288e"
+                stroke="#12284c"
                 strokeWidth={2.5}
                 fill="url(#gmvFill)"
-                dot={{ r: 3, fill: "#00288e" }}
+                dot={{ r: 3, fill: "#12284c" }}
                 activeDot={{ r: 5 }}
               />
             </AreaChart>
